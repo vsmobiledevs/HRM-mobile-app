@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import {
   View,
   Text,
@@ -10,10 +10,11 @@ import {
 import {NavigationProp} from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
 
-import {HP, WP, colors} from '../../utilities/exporter';
+import {ChangePassVS, HP, WP, changePassFormFields, colors} from '../../utilities/exporter';
 import RNInput from '../../components/RNInput';
 import RNButton from '../../components/RNButton';
 import {Icons} from '../../assets/svgs';
+import { Formik } from 'formik';
 
 interface Props {
   navigation: NavigationProp<any, any>;
@@ -22,6 +23,10 @@ interface Props {
 const ChangePassword: React.FC<Props> = props => {
   const {navigation} = props;
   const [isSeen, setIsSeen] = useState(false);
+  const formikRef = useRef();
+  const handleChangePass = (values)=> {
+    navigation.navigate('login');
+  }
 
   return (
     <View style={styles.container}>
@@ -31,38 +36,49 @@ const ChangePassword: React.FC<Props> = props => {
           resizeMode="cover"
           style={styles.imageStyle}
         />
-
+        <Formik
+        innerRef={formikRef}
+        initialValues={changePassFormFields}
+        onSubmit={(values, {resetForm}) => {
+          handleChangePass(values);
+        }}
+        validationSchema={ChangePassVS}>
+        {({values, errors, touched, handleSubmit, handleChange}) => (
         <View style={styles.formStyle}>
           <RNInput
             title="Password"
             inputProps={{
-              // value: values.email,
+              value: values.password,
               style: styles.inputStyle,
-              // onChangeText: handleChange('email'),
+              onChangeText: handleChange('password'),
             }}
             rightIcon={isSeen ? Icons.show : Icons.hide}
             onPress={() => setIsSeen(!isSeen)}
+            errorMessage={errors.password}
+            touched={touched.password}
           />
 
           <RNInput
             title="Confirm Password"
             inputProps={{
-              // value: values.email,
+              value: values.confirmPassword,
               style: styles.inputStyle,
-              // onChangeText: handleChange('email'),
+              onChangeText: handleChange('confirmPassword'),
             }}
+            errorMessage={errors.confirmPassword}
+            touched={touched.confirmPassword}
           />
 
           <RNButton
             text="Done"
             btnProps={{
               activeOpacity: 0.8,
-              onPress: () => navigation.navigate('login'),
+              onPress: () => handleSubmit(),
             }}
             btnStyle={styles.loginBtn}
             textStyle={styles.textStyle}
           />
-        </View>
+        </View>)}</Formik>
       </ScrollView>
     </View>
   );

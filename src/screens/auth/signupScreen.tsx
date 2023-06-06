@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import {
   View,
   Text,
@@ -9,10 +9,11 @@ import {
 } from 'react-native';
 import {NavigationProp} from '@react-navigation/native';
 
-import {HP, WP, colors} from '../../utilities/exporter';
+import {HP, WP, colors, signupFormFields, SignupVS} from '../../utilities/exporter';
 import RNInput from '../../components/RNInput';
 import RNButton from '../../components/RNButton';
 import {Icons} from '../../assets/svgs';
+import { Formik } from 'formik';
 
 interface Props {
   navigation: NavigationProp<any, any>;
@@ -21,6 +22,12 @@ interface Props {
 const SignupScreen: React.FC<Props> = props => {
   const {navigation} = props;
   const [isSeen, setIsSeen] = useState(false);
+  const formikRef =useRef();
+
+  const  handleSignup = (values) => {
+    navigation.navigate('login');
+  }
+
   return (
     <View style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -29,58 +36,76 @@ const SignupScreen: React.FC<Props> = props => {
           resizeMode="cover"
           style={styles.imageStyle}
         />
+        <Formik
+        innerRef={formikRef}
+        initialValues={signupFormFields}
+        onSubmit={(values, {resetForm}) => {
+          handleSignup(values);
+        }}
+        validationSchema={SignupVS}>
+        {({values, errors, touched, handleSubmit, handleChange}) => (
         <View style={styles.formStyle}>
           <RNInput
             title="First Name"
             inputProps={{
-              // value: values.email,
+              value: values.firstname,
               style: styles.inputStyle,
-              // onChangeText: handleChange('email'),
+              onChangeText: handleChange('firstname'),
             }}
+            errorMessage={errors.firstname}
+            touched={touched.firstname}
           />
           <RNInput
             title="Last Name"
             inputProps={{
-              // value: values.email,
+              value: values.lastname,
               style: styles.inputStyle,
-              // onChangeText: handleChange('email'),
+              onChangeText: handleChange('lastname'),
             }}
+            errorMessage={errors.lastname}
+            touched={touched.lastname}
           />
           <RNInput
             title="Email"
             inputProps={{
-              // value: values.email,
+              value: values.email,
               placeholder: 'example@gmail.com',
               keyboardType: 'email-address',
               placeholderTextColor: colors.b1,
               style: styles.inputStyle,
-              // onChangeText: handleChange('email'),
+              onChangeText: handleChange('email'),
             }}
+            errorMessage={errors.email}
+            touched={touched.email}
           />
           <RNInput
             title="Password"
             inputProps={{
-              // value: values.email,
+              value: values.password,
               style: styles.inputStyle,
-              // onChangeText: handleChange('email'),
+              onChangeText: handleChange('password'),
             }}
             rightIcon={isSeen ? Icons.show : Icons.hide}
             onPress={() => setIsSeen(!isSeen)}
+            errorMessage={errors.password}
+            touched={touched.password}
           />
           <RNInput
             title="Confirm Password"
             inputProps={{
-              // value: values.email,
+              value: values.confirmpassword,
               style: styles.inputStyle,
-              // onChangeText: handleChange('email'),
+              onChangeText: handleChange('confirmpassword'),
             }}
+            errorMessage={errors.confirmpassword}
+            touched={touched.confirmpassword}
           />
 
           <RNButton
             text="Signup"
             btnProps={{
               activeOpacity: 0.8,
-              onPress: () => navigation.navigate('login'),
+              onPress: () => handleSubmit(),
             }}
             btnStyle={styles.signupBtn}
             textStyle={styles.textStyle}
@@ -92,6 +117,8 @@ const SignupScreen: React.FC<Props> = props => {
             </Text>
           </TouchableOpacity>
         </View>
+        )}
+        </Formik>
       </ScrollView>
     </View>
   );
