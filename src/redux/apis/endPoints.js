@@ -1,4 +1,15 @@
 export const endpoints = {
-  signUp: 'users',
-  login: 'auth/login',
+  signUp: 'authentication/sign_up',
+  login: 'authentication/login',
+  logout: 'authentication/logout',
+  sendOtp: 'reset_password/send_otp',
+  verifyOtp: 'reset_password/verify_otp',
+  resetPassword: 'reset_password/reset_password',
+  allLeavesRequest: 'users/get_leave_requests',
+  createNewLeave: 'users/create_leave_request',
+  getAllAttendance: 'users/get_attendance_requests',
+  createNewAttendance: 'users/create_attendance_request',
+  CheckIn: 'attendance/check_in',
+  checkOut: 'attendance/check_out',
+  accessoryRequest: 'accessory_requests',
 };
