@@ -69,8 +69,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignContent: 'center',
-    marginHorizontal: WP(5),
-    marginVertical: HP(2),
+    marginBottom: HP(2),
+    backgroundColor: colors.p1,
+    height: HP(8),
   },
   profileStyle: {
     width: WP(15),
@@ -81,16 +82,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    marginHorizontal: WP(5),
   },
   headerTextStyle: {
     fontWeight: '700',
-    color: colors.b0,
+    color: colors.white,
     marginLeft: WP(5),
     fontSize: WP(7),
   },
   rightView: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginHorizontal: WP(5),
   },
   rightBtn: {alignSelf: 'center', marginHorizontal: WP(1)},
 });

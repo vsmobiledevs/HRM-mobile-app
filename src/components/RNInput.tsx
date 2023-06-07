@@ -13,18 +13,27 @@ import {Icons} from '../assets/svgs';
 interface Props {
   title: string;
   inputProps: object;
-  touched: boolean;
-  errorMessage: string;
+  touched: boolean | undefined;
+  errorMessage: string | undefined;
   rightIcon: any;
-  onPress: any;
+  onPress: (Event: GestureResponderEvent) => void;
+  inputStyle: object;
 }
 
 const RNInput: React.FC<Props> = props => {
-  const {title, inputProps, touched, errorMessage, rightIcon, onPress} = props;
+  const {
+    title,
+    inputProps,
+    touched,
+    errorMessage,
+    rightIcon,
+    onPress,
+    inputStyle,
+  } = props;
   return (
     <>
       {title && <Text style={styles.titleStyle}>{title}</Text>}
-      <View style={styles.inputStyle}>
+      <View style={[{...styles.inputStyle}, inputStyle]}>
         <TextInput {...inputProps} />
         <TouchableOpacity style={styles.rightIconStyle} onPress={onPress}>
           {rightIcon}
@@ -43,8 +52,8 @@ const styles = StyleSheet.create({
   inputStyle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    borderColor: colors.b1,
-    borderWidth: 1,
+    borderColor: colors.p1,
+    borderWidth: 0.5,
     borderRadius: WP(2),
     height: HP(6),
     paddingLeft: 5,

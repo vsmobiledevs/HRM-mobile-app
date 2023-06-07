@@ -8,17 +8,16 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {HP, WP, colors} from '../utilities/exporter';
-import {string} from 'yup';
+import {Icons} from '../assets/svgs';
 
 interface Props {
-  selectDate: () => void;
   text: string;
-  maximumDate: Date;
-  minimunDate: Date;
+  title: string;
+  selectDate: (event: GestureResponderEvent) => void;
 }
 
 const DatePicker: React.FC<Props> = props => {
-  const {selectDate, text, maximumDate, minimunDate} = props;
+  const {text, selectDate, title} = props;
 
   const [date, setDate] = useState(new Date());
   const [mode, setMode] = useState('date');
@@ -29,7 +28,7 @@ const DatePicker: React.FC<Props> = props => {
     const currentDate = selectedDate || date;
     if (event.type == 'set') {
       setDate(currentDate);
-      // props.selectDate(moment(currentDate).format('DD/MM/YYYY'));
+      selectDate(moment(currentDate).format('DD/MM/YYYY'));
       setShow(false);
     } else {
       setSelect(false);
@@ -52,28 +51,29 @@ const DatePicker: React.FC<Props> = props => {
   };
 
   return (
-    <TouchableOpacity
-      onPress={showDatepicker}
-      style={styles.calanderFieldStyle}>
-      <Text style={[styles.calanderText, {color: colors.p1}]}>
-        {select ? formatDate(date) : 'Start Date'}
-      </Text>
+    <>
+      <Text style={styles.titleStyle}>{title}</Text>
+      <TouchableOpacity
+        onPress={showDatepicker}
+        style={styles.calanderFieldStyle}>
+        <Text style={[styles.calanderText, {color: colors.b1}]}>
+          {select ? formatDate(date) : text}
+        </Text>
 
-      {/* <CalanderImage marginRight={WP('4%')} /> */}
+        {Icons.calander}
 
-      {show && (
-        <DateTimePicker
-          // testID="dateTimePicker"
-          value={date}
-          mode={mode}
-          is24Hour={true}
-          display="default"
-          onChange={onChange}
-          maximumDate={maximumDate ? props.maximumDate : null}
-          minimumDate={minimunDate ? props.minimunDate : null}
-        />
-      )}
-    </TouchableOpacity>
+        {show && (
+          <DateTimePicker
+            // testID="dateTimePicker"
+            value={date}
+            mode={mode}
+            is24Hour={true}
+            display="default"
+            onChange={onChange}
+          />
+        )}
+      </TouchableOpacity>
+    </>
   );
 };
 
@@ -82,18 +82,23 @@ DatePicker.defaultProps = {};
 export default DatePicker;
 
 const styles = StyleSheet.create({
+  titleStyle: {
+    fontSize: WP(4),
+    fontWeight: '600',
+    color: colors.p1,
+    marginVertical: HP(1),
+  },
   calanderFieldStyle: {
     flexDirection: 'row',
     height: HP('7%'),
-    marginLeft: WP('7%'),
-    marginRight: WP('7%'),
     backgroundColor: colors.white,
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: HP('2%'),
     borderRadius: WP('3%'),
-    borderWidth: 1,
-    borderColor: colors.b0,
+    borderWidth: 0.5,
+    borderColor: colors.p1,
+    paddingRight: WP(5),
   },
 
   calanderText: {

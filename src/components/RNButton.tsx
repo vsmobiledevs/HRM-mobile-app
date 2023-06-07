@@ -19,7 +19,7 @@ const RNButton: React.FC<Props> = props => {
   const {btnProps, textStyle, text, btnStyle} = props;
 
   return (
-    <TouchableOpacity {...btnProps} style={[btnStyle, styles.btn]}>
+    <TouchableOpacity {...btnProps} style={[{...styles.btn}, btnStyle]}>
       <Text style={[styles?.signIn, textStyle]}> {text} </Text>
     </TouchableOpacity>
   );
