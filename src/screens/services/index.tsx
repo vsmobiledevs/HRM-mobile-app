@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.b2,
   },
   miniContainer: {
-    backgroundColor: colors.p1,
     padding: 10,
     flex: 0.91,
   },

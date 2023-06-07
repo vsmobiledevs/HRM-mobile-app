@@ -18,6 +18,7 @@ import TimeSheet from './timeSheet.svg';
 import Attendance from './attendance.svg';
 import BackArrow from './backArrow.svg';
 import Add from './add.svg';
+import Calander from './calander.svg';
 import ForwordArrow from './forwordArrow.svg';
 
 export const Icons = {
@@ -42,5 +43,6 @@ export const Icons = {
   attendance: <Attendance alignSelf="center" />,
   backArrow: <BackArrow alignSelf="center" width={25} height={25} />,
   add: <Add alignSelf="center" />,
+  calander: <Calander alignSelf="center" width={20} height={20} />,
   forwordArrow: <ForwordArrow alignSelf="center" />,
 };

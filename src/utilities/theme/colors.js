@@ -2,6 +2,7 @@ export const colors = {
   // Primary Color
   p1: '#0077B4',
   p2: '#272341',
+  p3: '#7C83F6',
 
   // Secondary Color
   s1: '#FA515B',
@@ -36,6 +37,7 @@ export const colors = {
 
   // orange
   orange: '#F2994A',
+  o1: '#EFB524',
   o2: '#FFEFC2',
   o3: '#B99840',
 
