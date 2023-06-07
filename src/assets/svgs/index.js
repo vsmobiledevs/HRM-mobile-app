@@ -19,6 +19,7 @@ import Attendance from './attendance.svg';
 import BackArrow from './backArrow.svg';
 import Add from './add.svg';
 import Calander from './calander.svg';
+import ForwordArrow from './forwordArrow.svg';
 
 export const Icons = {
   logo: <Logo alignSelf="center" width={100} height={80} />,
@@ -43,4 +44,5 @@ export const Icons = {
   backArrow: <BackArrow alignSelf="center" width={25} height={25} />,
   add: <Add alignSelf="center" />,
   calander: <Calander alignSelf="center" width={20} height={20} />,
+  forwordArrow: <ForwordArrow alignSelf="center" />,
 };
