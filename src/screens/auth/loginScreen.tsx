@@ -9,9 +9,15 @@ import {
 } from 'react-native';
 import {NavigationProp} from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
-import { Formik } from 'formik';
+import {Formik} from 'formik';
 
-import {HP, WP, colors, loginFormFields, LoginVS} from '../../utilities/exporter';
+import {
+  HP,
+  WP,
+  colors,
+  loginFormFields,
+  LoginVS,
+} from '../../utilities/exporter';
 import RNInput from '../../components/RNInput';
 import RNButton from '../../components/RNButton';
 import {Icons} from '../../assets/svgs';
@@ -25,9 +31,9 @@ const LoginScreen: React.FC<Props> = props => {
   const [isSeen, setIsSeen] = useState(false);
   const formikRef = useRef();
 
-  const handleLogin = (values) => {
-    navigation.navigate('login')
-  }
+  const handleLogin = values => {
+    navigation.navigate('login');
+  };
 
   return (
     <View style={styles.container}>
@@ -45,66 +51,68 @@ const LoginScreen: React.FC<Props> = props => {
           duration={1000}
           delay={200}
           style={styles.formStyle}>
-        <Formik
-        innerRef={formikRef}
-        initialValues={loginFormFields}
-        onSubmit={(values, {resetForm}) => {
-          handleLogin(values);
-        }}
-        validationSchema={LoginVS}>
-        {({values, errors, touched, handleSubmit, handleChange}) => (
-          <>
-          <RNInput
-            title="Email"
-            inputProps={{
-              value: values.email,
-              placeholder: 'example@gmail.com',
-              keyboardType: 'email-address',
-              placeholderTextColor: colors.b1,
-              style: styles.inputStyle,
-              onChangeText: handleChange('email'),
+          <Formik
+            innerRef={formikRef}
+            initialValues={loginFormFields}
+            onSubmit={(values, {resetForm}) => {
+              handleLogin(values);
             }}
-            errorMessage={errors.email}
-            touched={touched.email}
-          />
-          <RNInput
-            title="Password"
-            inputProps={{
-              value: values.password,
-              style: styles.inputStyle,
-              onChangeText: handleChange('password'),
-            }}
-            rightIcon={isSeen ? Icons.show : Icons.hide}
-            onPress={() => setIsSeen(!isSeen)}
-            errorMessage={errors.password}
-            touched={touched.password}
-          />
+            validationSchema={LoginVS}>
+            {({values, errors, touched, handleSubmit, handleChange}) => (
+              <>
+                <RNInput
+                  title="Email"
+                  inputProps={{
+                    value: values.email,
+                    placeholder: 'example@gmail.com',
+                    keyboardType: 'email-address',
+                    placeholderTextColor: colors.b1,
+                    style: styles.inputStyle,
+                    onChangeText: handleChange('email'),
+                  }}
+                  errorMessage={errors.email}
+                  touched={touched.email}
+                />
+                <RNInput
+                  title="Password"
+                  inputProps={{
+                    value: values.password,
+                    style: styles.inputStyle,
+                    onChangeText: handleChange('password'),
+                  }}
+                  rightIcon={isSeen ? Icons.show : Icons.hide}
+                  onPress={() => setIsSeen(!isSeen)}
+                  errorMessage={errors.password}
+                  touched={touched.password}
+                />
 
-          <RNButton
-            text="Login"
-            btnProps={{
-              activeOpacity: 0.8,
-              onPress: () => handleSubmit(),
-            }}
-            btnStyle={styles.loginBtn}
-            textStyle={styles.textStyle}
-          />
-          
+                <RNButton
+                  text="Login"
+                  btnProps={{
+                    activeOpacity: 0.8,
+                    onPress: () => handleSubmit(),
+                  }}
+                  btnStyle={styles.loginBtn}
+                  textStyle={styles.textStyle}
+                />
 
-          <View style={styles.footerView}>
-            <TouchableOpacity onPress={() => navigation.navigate('forgot')}>
-              <Text style={[styles?.footerStyle, {color: colors.p1}]}>
-                Forgot Password?
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('signup')}>
-              <Text style={[styles?.footerStyle, {color: colors.b1}]}>
-                Sign UP
-              </Text>
-            </TouchableOpacity>
-          </View>
-          </>)}
-      </Formik>
+                <View style={styles.footerView}>
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate('forgot')}>
+                    <Text style={[styles?.footerStyle, {color: colors.p1}]}>
+                      Forgot Password?
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate('signup')}>
+                    <Text style={[styles?.footerStyle, {color: colors.b1}]}>
+                      Sign UP
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              </>
+            )}
+          </Formik>
         </Animatable.View>
       </ScrollView>
     </View>

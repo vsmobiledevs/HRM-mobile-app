@@ -13,14 +13,14 @@ interface Props {
 const Leaves: React.FC<Props> = props => {
   const {navigation} = props;
 
-  const [isIndex, setIsIndex] = useState();
+  const [isIndex, setIsIndex] = useState(0);
 
   return (
     <View style={styles.container}>
       <RNHeader
         text="Leaves"
         leftOnPress={() => navigation.goBack()}
-        addPress={() => null}
+        addPress={() => navigation.navigate('newLeave')}
         image=""
       />
 
@@ -28,6 +28,7 @@ const Leaves: React.FC<Props> = props => {
         {groupBtns.map((i, index: number) => {
           return (
             <RNButton
+              key={index}
               text={i.name}
               btnStyle={[
                 styles.groupBtnStyle,
