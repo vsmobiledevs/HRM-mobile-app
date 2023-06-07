@@ -18,7 +18,12 @@ const NewLeave: React.FC<Props> = props => {
         leftOnPress={() => navigation.goBack()}
         image=""
       />
-      <DatePicker />
+      <DatePicker
+        text="Start Date"
+        selectDate={d => console.log(d)}
+        maximumDate={new Date('2023')}
+        minimumDate={new Date()}
+      />
     </View>
   );
 };
