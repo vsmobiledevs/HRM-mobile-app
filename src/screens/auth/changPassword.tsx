@@ -10,11 +10,18 @@ import {
 import {NavigationProp} from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
 
-import {ChangePassVS, HP, WP, changePassFormFields, colors} from '../../utilities/exporter';
+import {
+  ChangePassVS,
+  HP,
+  WP,
+  changePassFormFields,
+  colors,
+} from '../../utilities/exporter';
 import RNInput from '../../components/RNInput';
 import RNButton from '../../components/RNButton';
 import {Icons} from '../../assets/svgs';
-import { Formik } from 'formik';
+import {Formik} from 'formik';
+import RNHeader from '../../components/RNHeader';
 
 interface Props {
   navigation: NavigationProp<any, any>;
@@ -24,12 +31,13 @@ const ChangePassword: React.FC<Props> = props => {
   const {navigation} = props;
   const [isSeen, setIsSeen] = useState(false);
   const formikRef = useRef();
-  const handleChangePass = (values)=> {
+  const handleChangePass = values => {
     navigation.navigate('login');
-  }
+  };
 
   return (
     <View style={styles.container}>
+      <RNHeader leftOnPress={() => navigation.goBack()} rightView={false} />
       <ScrollView showsVerticalScrollIndicator={false}>
         <Image
           source={require('../../assets/images/logo.png')}
@@ -37,48 +45,50 @@ const ChangePassword: React.FC<Props> = props => {
           style={styles.imageStyle}
         />
         <Formik
-        innerRef={formikRef}
-        initialValues={changePassFormFields}
-        onSubmit={(values, {resetForm}) => {
-          handleChangePass(values);
-        }}
-        validationSchema={ChangePassVS}>
-        {({values, errors, touched, handleSubmit, handleChange}) => (
-        <View style={styles.formStyle}>
-          <RNInput
-            title="Password"
-            inputProps={{
-              value: values.password,
-              style: styles.inputStyle,
-              onChangeText: handleChange('password'),
-            }}
-            rightIcon={isSeen ? Icons.show : Icons.hide}
-            onPress={() => setIsSeen(!isSeen)}
-            errorMessage={errors.password}
-            touched={touched.password}
-          />
+          innerRef={formikRef}
+          initialValues={changePassFormFields}
+          onSubmit={(values, {resetForm}) => {
+            handleChangePass(values);
+          }}
+          validationSchema={ChangePassVS}>
+          {({values, errors, touched, handleSubmit, handleChange}) => (
+            <View style={styles.formStyle}>
+              <RNInput
+                title="Password"
+                inputProps={{
+                  value: values.password,
+                  style: styles.inputStyle,
+                  onChangeText: handleChange('password'),
+                }}
+                rightIcon={isSeen ? Icons.show : Icons.hide}
+                onPress={() => setIsSeen(!isSeen)}
+                errorMessage={errors.password}
+                touched={touched.password}
+              />
 
-          <RNInput
-            title="Confirm Password"
-            inputProps={{
-              value: values.confirmPassword,
-              style: styles.inputStyle,
-              onChangeText: handleChange('confirmPassword'),
-            }}
-            errorMessage={errors.confirmPassword}
-            touched={touched.confirmPassword}
-          />
+              <RNInput
+                title="Confirm Password"
+                inputProps={{
+                  value: values.confirmPassword,
+                  style: styles.inputStyle,
+                  onChangeText: handleChange('confirmPassword'),
+                }}
+                errorMessage={errors.confirmPassword}
+                touched={touched.confirmPassword}
+              />
 
-          <RNButton
-            text="Done"
-            btnProps={{
-              activeOpacity: 0.8,
-              onPress: () => handleSubmit(),
-            }}
-            btnStyle={styles.loginBtn}
-            textStyle={styles.textStyle}
-          />
-        </View>)}</Formik>
+              <RNButton
+                text="Done"
+                btnProps={{
+                  activeOpacity: 0.8,
+                  onPress: () => handleSubmit(),
+                }}
+                btnStyle={styles.loginBtn}
+                textStyle={styles.textStyle}
+              />
+            </View>
+          )}
+        </Formik>
       </ScrollView>
     </View>
   );
@@ -93,7 +103,7 @@ const styles = StyleSheet.create({
   },
   imageStyle: {
     width: WP(100),
-    height: HP(30),
+    height: HP(20),
     alignSelf: 'center',
   },
   inputStyle: {

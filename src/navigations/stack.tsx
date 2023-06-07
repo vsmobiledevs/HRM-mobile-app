@@ -57,7 +57,7 @@ const MainStack = () => {
     );
   };
 
-  if (false) {
+  if (true) {
     return <AfterAuthStack />;
   } else {
     return <BeforeAuthStack />;

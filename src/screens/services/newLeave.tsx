@@ -3,6 +3,7 @@ import {View, Text, StyleSheet} from 'react-native';
 import {colors} from '../../utilities/exporter';
 import RNHeader from '../../components/RNHeader';
 import {NavigationProp} from '@react-navigation/native';
+import DatePicker from '../../components/DatePicker';
 
 interface Props {
   navigation: NavigationProp<any, any>;
@@ -17,6 +18,7 @@ const NewLeave: React.FC<Props> = props => {
         leftOnPress={() => navigation.goBack()}
         image=""
       />
+      <DatePicker />
     </View>
   );
 };
