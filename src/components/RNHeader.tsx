@@ -16,10 +16,11 @@ interface Props {
   addPress: (event: GestureResponderEvent) => void;
   image: string;
   leftOnPress: (event: GestureResponderEvent) => void;
+  rightView: boolean;
 }
 
 const RNHeader: React.FC<Props> = props => {
-  const {text, notiPress, addPress, image, leftOnPress} = props;
+  const {text, notiPress, addPress, image, leftOnPress, rightView} = props;
   return (
     <View style={styles.container}>
       <View style={styles.headerView}>
@@ -39,16 +40,18 @@ const RNHeader: React.FC<Props> = props => {
         )}
         <Text style={styles.headerTextStyle}>{text}</Text>
       </View>
-      <View style={styles.rightView}>
-        <TouchableOpacity onPress={notiPress} style={styles.rightBtn}>
-          {Icons.noti}
-        </TouchableOpacity>
-        {addPress ? (
-          <TouchableOpacity onPress={addPress} style={styles.rightBtn}>
-            {Icons.add}
+      {rightView ? (
+        <View style={styles.rightView}>
+          <TouchableOpacity onPress={notiPress} style={styles.rightBtn}>
+            {Icons.noti}
           </TouchableOpacity>
-        ) : null}
-      </View>
+          {addPress ? (
+            <TouchableOpacity onPress={addPress} style={styles.rightBtn}>
+              {Icons.add}
+            </TouchableOpacity>
+          ) : null}
+        </View>
+      ) : null}
     </View>
   );
 };
@@ -58,6 +61,7 @@ RNHeader.defaultProps = {
   notiPress: () => null,
   image: '',
   leftOnPress: () => null,
+  rightView: true,
 };
 
 const styles = StyleSheet.create({

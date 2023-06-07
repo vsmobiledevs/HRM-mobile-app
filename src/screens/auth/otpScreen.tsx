@@ -13,6 +13,7 @@ import * as Animatable from 'react-native-animatable';
 
 import {HP, WP, colors} from '../../utilities/exporter';
 import RNButton from '../../components/RNButton';
+import RNHeader from '../../components/RNHeader';
 
 interface Props {
   navigation: NavigationProp<any, any>;
@@ -49,6 +50,7 @@ const OtpScreen: React.FC<Props> = props => {
 
   return (
     <View style={styles.container}>
+      <RNHeader leftOnPress={() => navigation.goBack()} rightView={false} />
       <ScrollView showsVerticalScrollIndicator={false}>
         <Image
           source={require('../../assets/images/logo.png')}
@@ -133,7 +135,7 @@ const styles = StyleSheet.create({
   },
   imageStyle: {
     width: WP(100),
-    height: HP(30),
+    height: HP(20),
     alignSelf: 'center',
   },
 

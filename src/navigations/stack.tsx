@@ -10,6 +10,7 @@ import ForgotScreen from '../screens/auth/forgotScreen';
 import OtpScreen from '../screens/auth/otpScreen';
 import ChangePassword from '../screens/auth/changPassword';
 import Leaves from '../screens/services/leaves';
+import NewLeave from '../screens/services/newLeave';
 
 const RootStack = createNativeStackNavigator();
 
@@ -50,6 +51,7 @@ const MainStack = () => {
           }}>
           <RootStack.Screen name={'bottomTab'} component={BottomTab} />
           <RootStack.Screen name={'leaves'} component={Leaves} />
+          <RootStack.Screen name={'newLeave'} component={NewLeave} />
         </RootStack.Navigator>
       </NavigationContainer>
     );

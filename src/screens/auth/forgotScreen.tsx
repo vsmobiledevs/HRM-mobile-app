@@ -2,10 +2,17 @@ import React, {useState, useRef} from 'react';
 import {View, Text, StyleSheet, Image, ScrollView} from 'react-native';
 import {NavigationProp} from '@react-navigation/native';
 
-import {ForgotPassVS, HP, WP, colors, forgotPassFormFields} from '../../utilities/exporter';
+import {
+  ForgotPassVS,
+  HP,
+  WP,
+  colors,
+  forgotPassFormFields,
+} from '../../utilities/exporter';
 import RNInput from '../../components/RNInput';
 import RNButton from '../../components/RNButton';
-import { Formik } from 'formik';
+import {Formik} from 'formik';
+import RNHeader from '../../components/RNHeader';
 
 interface Props {
   navigation: NavigationProp<any, any>;
@@ -15,12 +22,13 @@ const ForgotScreen: React.FC<Props> = props => {
   const {navigation} = props;
   const [isSeen, setIsSeen] = useState(false);
   const formikRef = useRef();
-  const handleForgotPass = (values) => { 
+  const handleForgotPass = values => {
     navigation.navigate('otp', {email: ''});
-  }
+  };
 
   return (
     <View style={styles.container}>
+      <RNHeader leftOnPress={() => navigation.goBack()} rightView={false} />
       <ScrollView showsVerticalScrollIndicator={false}>
         <Image
           source={require('../../assets/images/logo.png')}
@@ -28,38 +36,40 @@ const ForgotScreen: React.FC<Props> = props => {
           style={styles.imageStyle}
         />
         <Formik
-        innerRef={formikRef}
-        initialValues={forgotPassFormFields}
-        onSubmit={(values, {resetForm}) => {
-          handleForgotPass(values);
-        }}
-        validationSchema={ForgotPassVS}>
-        {({values, errors, touched, handleSubmit, handleChange}) => (
-        <View style={styles.formStyle}>
-          <RNInput
-            title="Email"
-            inputProps={{
-              value: values.email,
-              placeholder: 'example@gmail.com',
-              keyboardType: 'email-address',
-              placeholderTextColor: colors.b1,
-              style: styles.inputStyle,
-              onChangeText: handleChange('email'),
-            }}
-            errorMessage={errors.email}
-            touched={touched.email}
-          />
+          innerRef={formikRef}
+          initialValues={forgotPassFormFields}
+          onSubmit={(values, {resetForm}) => {
+            handleForgotPass(values);
+          }}
+          validationSchema={ForgotPassVS}>
+          {({values, errors, touched, handleSubmit, handleChange}) => (
+            <View style={styles.formStyle}>
+              <RNInput
+                title="Email"
+                inputProps={{
+                  value: values.email,
+                  placeholder: 'example@gmail.com',
+                  keyboardType: 'email-address',
+                  placeholderTextColor: colors.b1,
+                  style: styles.inputStyle,
+                  onChangeText: handleChange('email'),
+                }}
+                errorMessage={errors.email}
+                touched={touched.email}
+              />
 
-          <RNButton
-            text="Next"
-            btnProps={{
-              activeOpacity: 0.8,
-              onPress: () => handleSubmit(),
-            }}
-            btnStyle={styles.forgotBtn}
-            textStyle={styles.textStyle}
-          />
-        </View>)}</Formik>
+              <RNButton
+                text="Next"
+                btnProps={{
+                  activeOpacity: 0.8,
+                  onPress: () => handleSubmit(),
+                }}
+                btnStyle={styles.forgotBtn}
+                textStyle={styles.textStyle}
+              />
+            </View>
+          )}
+        </Formik>
       </ScrollView>
     </View>
   );
@@ -74,7 +84,7 @@ const styles = StyleSheet.create({
   },
   imageStyle: {
     width: WP(100),
-    height: HP(30),
+    height: HP(20),
     alignSelf: 'center',
   },
   inputStyle: {
