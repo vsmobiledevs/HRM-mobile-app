@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import axios, {AxiosRequestConfig} from 'axios';
 import {BASE_URL, PREFIX} from '@env';
-import {endpoints} from './endPoints';
+import endPoints from './endPoints';
 
 export const header = (token: string) => {
   let header = {
@@ -22,7 +22,7 @@ const signIn = createAsyncThunk(
       };
 
       const response = await axios.post(
-        `${BASE_URL + PREFIX + endpoints.login}`,
+        `${BASE_URL + PREFIX + endPoints.login}`,
         formData,
         config,
       );

@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {WP, colors, size} from '../utilities/exporter';
-import {Icons} from '../assets/svgs';
+import Icons from '../assets/svgs';
 
 interface Props {
   item: object;

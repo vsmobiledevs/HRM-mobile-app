@@ -1,4 +1,4 @@
-export const endpoints = {
+export default endpoints = {
   signUp: 'authentication/sign_up',
   login: 'authentication/login',
   logout: 'authentication/logout',

@@ -1,10 +1,9 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import LoginScreen from '../screens/auth/loginScreen';
 import {HP, WP, colors} from '../utilities/exporter';
 import HomeScreen from '../screens/home';
-import {Icons} from '../assets/svgs';
+import Icons from '../assets/svgs';
 import ServicesScreen from '../screens/services';
 import ApprovalScreen from '../screens/approval';
 import MoreScreen from '../screens/more';
@@ -36,7 +35,6 @@ const BottomTab = () => (
       name="Services"
       component={ServicesScreen}
       options={{
-        tabBarActiveTintColor: 'white',
         tabBarIcon: ({focused}) => {
           return focused ? Icons.fillServices : Icons.services;
         },
@@ -51,7 +49,6 @@ const BottomTab = () => (
       name="home"
       component={HomeScreen}
       options={{
-        tabBarActiveTintColor: 'white',
         tabBarIcon: ({focused}) => {
           return focused ? Icons.fillHome : Icons.home;
         },
@@ -65,7 +62,6 @@ const BottomTab = () => (
       name="Approvals"
       component={ApprovalScreen}
       options={{
-        tabBarActiveTintColor: 'white',
         tabBarIcon: ({focused}) => {
           return focused ? Icons.fillApprovals : Icons.approvals;
         },
@@ -79,7 +75,6 @@ const BottomTab = () => (
       name="more"
       component={MoreScreen}
       options={{
-        tabBarActiveTintColor: 'white',
         tabBarIcon: ({focused}) => {
           return focused ? Icons.fillMore : Icons.more;
         },

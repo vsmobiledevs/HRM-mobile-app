@@ -5,7 +5,7 @@ import {NavigationProp} from '@react-navigation/native';
 
 import RNButton from '../../components/RNButton';
 import {colors, WP, HP} from '../../utilities/exporter';
-import {Icons} from '../../assets/svgs';
+import Icons from '../../assets/svgs';
 
 interface Props {
   navigation: NavigationProp<any, any>;

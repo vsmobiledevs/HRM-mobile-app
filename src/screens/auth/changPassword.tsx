@@ -19,7 +19,7 @@ import {
 } from '../../utilities/exporter';
 import RNInput from '../../components/RNInput';
 import RNButton from '../../components/RNButton';
-import {Icons} from '../../assets/svgs';
+import Icons from '../../assets/svgs';
 import {Formik} from 'formik';
 import RNHeader from '../../components/RNHeader';
 

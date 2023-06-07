@@ -3,7 +3,7 @@ import {View, Text, StyleSheet, Platform, FlatList} from 'react-native';
 import {HP, WP, colors} from '../../utilities/exporter';
 import RNHeader from '../../components/RNHeader';
 import {NavigationProp} from '@react-navigation/native';
-import {groupBtns} from '../../utilities/dummyData';
+import {groupBtns, leaveList} from '../../utilities/dummyData';
 import RNButton from '../../components/RNButton';
 import LeaveCard from '../../components/LeaveCard';
 
@@ -15,29 +15,6 @@ const Leaves: React.FC<Props> = props => {
   const {navigation} = props;
 
   const [isIndex, setIsIndex] = useState();
-  const leaveList = [
-    {
-      id: 1,
-      detail: 'Half Day Application',
-      status: 'Awaiting',
-      date: 'Wed, 16 Dec',
-      reason: 'Casual',
-    },
-    {
-      id: 2,
-      detail: 'Full Day Application',
-      status: 'Approved',
-      date: 'Wed, 16 Dec',
-      reason: 'Casual',
-    },
-    {
-      id: 3,
-      detail: 'Full Day Application',
-      status: 'Decline',
-      date: 'Wed, 18 Dec',
-      reason: 'Sick',
-    },
-  ];
 
   return (
     <View style={styles.container}>
@@ -76,8 +53,8 @@ const Leaves: React.FC<Props> = props => {
       </View>
       <FlatList
         data={leaveList}
-        renderItem={item => {
-          return <LeaveCard item={item?.item} />;
+        renderItem={(item: object, index: number) => {
+          return <LeaveCard key={index} item={item?.item} />;
         }}
       />
     </View>

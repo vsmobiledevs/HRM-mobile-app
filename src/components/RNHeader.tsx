@@ -8,7 +8,7 @@ import {
   GestureResponderEvent,
 } from 'react-native';
 import {HP, WP, colors} from '../utilities/exporter';
-import {Icons} from '../assets/svgs';
+import Icons from '../assets/svgs';
 
 interface Props {
   text: string;

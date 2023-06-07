@@ -1,3 +1,5 @@
+import React from 'react';
+
 import Logo from './logo.svg';
 import Hide from './hide.svg';
 import Show from './show.svg';
@@ -21,7 +23,7 @@ import Add from './add.svg';
 import Calander from './calander.svg';
 import ForwordArrow from './forwordArrow.svg';
 
-export const Icons = {
+export default {
   logo: <Logo alignSelf="center" width={100} height={80} />,
   hide: <Hide alignSelf="center" />,
   show: <Show alignSelf="center" />,
@@ -34,7 +36,7 @@ export const Icons = {
   fillHome: <FillHome alignSelf="center" />,
   fillApprovals: <FillApprovals alignSelf="center" />,
   fillMore: <FillMore alignSelf="center" />,
-  noti: <Noti alignSelf="center" />,
+
   search: <Search alignSelf="center" />,
   perfor: <Perfor alignSelf="center" />,
   leave: <Leave alignSelf="center" />,
