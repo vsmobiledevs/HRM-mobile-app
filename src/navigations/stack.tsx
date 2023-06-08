@@ -11,6 +11,8 @@ import OtpScreen from '../screens/auth/otpScreen';
 import ChangePassword from '../screens/auth/changPassword';
 import Leaves from '../screens/services/leaves';
 import NewLeave from '../screens/services/newLeave';
+import Accessories from '../screens/services/accessories';
+import NewAccessory from '../screens/services/newAccessory';
 
 const RootStack = createNativeStackNavigator();
 
@@ -51,7 +53,9 @@ const MainStack = () => {
           }}>
           <RootStack.Screen name={'bottomTab'} component={BottomTab} />
           <RootStack.Screen name={'leaves'} component={Leaves} />
+          <RootStack.Screen name={'accessories'} component={Accessories} />
           <RootStack.Screen name={'newLeave'} component={NewLeave} />
+          <RootStack.Screen name={'newAccessory'} component={NewAccessory} />
         </RootStack.Navigator>
       </NavigationContainer>
     );

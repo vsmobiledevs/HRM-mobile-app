@@ -11,15 +11,12 @@ import FillApprovals from './fillApprovals.svg';
 import FillMore from './fillMore.svg';
 import Noti from './noti.svg';
 import Search from './search.svg';
-import Perfor from './performance.svg';
 import Leave from './leaves.svg';
-import Organization from './organization.svg';
-import TimeSheet from './timeSheet.svg';
-import Attendance from './attendance.svg';
 import BackArrow from './backArrow.svg';
 import Add from './add.svg';
 import Calander from './calander.svg';
 import ForwordArrow from './forwordArrow.svg';
+import Accessories from './accessories.svg';
 
 export const Icons = {
   logo: <Logo alignSelf="center" width={100} height={80} />,
@@ -36,13 +33,10 @@ export const Icons = {
   fillMore: <FillMore alignSelf="center" />,
   noti: <Noti alignSelf="center" />,
   search: <Search alignSelf="center" />,
-  perfor: <Perfor alignSelf="center" />,
   leave: <Leave alignSelf="center" />,
-  organization: <Organization alignSelf="center" />,
-  timeSheet: <TimeSheet alignSelf="center" />,
-  attendance: <Attendance alignSelf="center" />,
   backArrow: <BackArrow alignSelf="center" width={25} height={25} />,
   add: <Add alignSelf="center" />,
   calander: <Calander alignSelf="center" width={20} height={20} />,
   forwordArrow: <ForwordArrow alignSelf="center" />,
+  accessories: <Accessories alignSelf="center" width={50} height={50} />,
 };

@@ -5,10 +5,11 @@ import {Icons} from '../assets/svgs';
 
 interface Props {
   item: object;
+  touchProps: object;
 }
 
 const LeaveCard: FC<Props> = props => {
-  const {item} = props;
+  const {item, touchProps} = props;
   console.log(item);
   return (
     <View style={styles.leaveContainer}>
@@ -55,7 +56,7 @@ const LeaveCard: FC<Props> = props => {
               ]}>
               {item?.reason}
             </Text>
-            <TouchableOpacity style={styles.iconContainer}>
+            <TouchableOpacity style={styles.iconContainer} {...touchProps}>
               {Icons.forwordArrow}
             </TouchableOpacity>
           </View>

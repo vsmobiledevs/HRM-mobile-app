@@ -30,7 +30,7 @@ const RNHeader: React.FC<Props> = props => {
             source={{
               uri: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?cs=srgb&dl=pexels-pixabay-220453.jpg&fm=jpg',
             }}
-            resizeMode="contain"
+            resizeMode="cover"
             style={styles.profileStyle}
           />
         ) : (
@@ -74,8 +74,8 @@ const styles = StyleSheet.create({
     height: HP(8),
   },
   profileStyle: {
-    width: WP(15),
-    height: WP(15),
+    width: WP(13),
+    height: WP(13),
     borderRadius: WP(5),
   },
   headerView: {

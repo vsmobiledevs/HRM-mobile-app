@@ -22,6 +22,14 @@ export const changePassFormFields = {
   confirmPassword: '',
 };
 
+export const leaveMsgFormFields = {
+  message: '',
+};
+
+export const accessoryMsgFormFields = {
+  message: '',
+};
+
 export const LoginVS = yup.object().shape({
   email: yup
     .string()
@@ -68,4 +76,12 @@ export const ChangePassVS = yup.object().shape({
     .min(6, 'Password must be at least 6 characters')
     .required('Confirm Password Required')
     .oneOf([yup.ref('password'), null], 'Password must match'),
+});
+
+export const LeaveMsgVS = yup.object().shape({
+  message: yup.string().required('Message Required'),
+});
+
+export const AccessoryMsgVS = yup.object().shape({
+  message: yup.string().required('Message Required'),
 });

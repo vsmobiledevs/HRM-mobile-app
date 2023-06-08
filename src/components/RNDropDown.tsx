@@ -13,16 +13,14 @@ import {HP, WP, colors} from '../utilities/exporter';
 interface Props {
   title: string;
   onPress: (event: GestureResponderEvent) => void;
+  list: object;
 }
 
 const RNDropDown: React.FC<Props> = props => {
-  const {onPress, title} = props;
+  const {onPress, title, list} = props;
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState();
-  const [items, setItems] = useState([
-    {id: 1, label: 'Casual', value: 'Casual'},
-    {id: 2, label: 'Sick', value: 'Sick'},
-  ]);
+  const [items, setItems] = useState(list);
 
   return (
     <>

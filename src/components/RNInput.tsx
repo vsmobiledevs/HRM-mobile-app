@@ -66,7 +66,6 @@ const styles = StyleSheet.create({
   },
   error: {
     color: colors.red,
-    marginStart: HP(4),
     marginTop: HP(0.5),
   },
   rightIconStyle: {

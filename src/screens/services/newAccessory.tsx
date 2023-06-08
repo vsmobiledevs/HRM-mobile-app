@@ -1,66 +1,57 @@
-import React, {useState, useRef} from 'react';
+import React, {FC, useRef} from 'react';
 import {View, Text, StyleSheet, TextInput, ScrollView} from 'react-native';
 import {
   HP,
   WP,
   colors,
-  LeaveMsgVS,
-  leaveMsgFormFields,
+  AccessoryMsgVS,
+  accessoryMsgFormFields,
 } from '../../utilities/exporter';
-import RNHeader from '../../components/RNHeader';
 import {NavigationProp} from '@react-navigation/native';
-import DatePicker from '../../components/DatePicker';
 import RNDropDown from '../../components/RNDropDown';
 import RNInput from '../../components/RNInput';
 import RNButton from '../../components/RNButton';
+import RNHeader from '../../components/RNHeader';
 import {Formik} from 'formik';
 
 interface Props {
   navigation: NavigationProp<any, any>;
 }
 
-const NewLeave: React.FC<Props> = props => {
+const NewAccessory: FC<Props> = props => {
   const {navigation} = props;
   const formikRef = useRef();
 
-  const list = [
-    {id: 1, label: 'Casual', value: 'Casual'},
-    {id: 2, label: 'Sick', value: 'Sick'},
+  const accessoryList = [
+    {id: 1, label: 'Mouse', value: 'Mouse'},
+    {id: 2, label: 'C-Type Cable', value: 'C-Type Cable'},
+    {id: 3, label: 'Android Device', value: 'Android Device'},
+    {id: 4, label: 'Ios Device', value: 'Ios Device'},
   ];
 
-  const handleLeave = values => {};
+  const handleAccessory = values => {};
 
   return (
     <View style={styles.container}>
       <RNHeader
-        text="New Leave"
+        text="New Accessory"
         leftOnPress={() => navigation.goBack()}
         image=""
       />
       <ScrollView>
         <View style={styles.miniContainer}>
-          <DatePicker
-            text="Start Date"
-            selectDate={d => console.log(d)}
-            title="START DATE"
-          />
-          <DatePicker
-            text="End Date"
-            selectDate={d => console.log(d)}
-            title="END DATE"
-          />
           <RNDropDown
             onPress={v => console.log(v)}
-            title="LEAVE TYPE"
-            list={list}
+            title="ACCESSORY TYPE"
+            list={accessoryList}
           />
           <Formik
             innerRef={formikRef}
-            initialValues={leaveMsgFormFields}
+            initialValues={accessoryMsgFormFields}
             onSubmit={(values, {resetForm}) => {
-              handleLeave(values);
+              handleAccessory(values);
             }}
-            validationSchema={LeaveMsgVS}>
+            validationSchema={AccessoryMsgVS}>
             {({values, errors, touched, handleSubmit, handleChange}) => (
               <>
                 <View style={styles.messageView}>
@@ -98,7 +89,7 @@ const NewLeave: React.FC<Props> = props => {
   );
 };
 
-NewLeave.defaultProps = {};
+export default NewAccessory;
 
 const styles = StyleSheet.create({
   container: {
@@ -141,5 +132,3 @@ const styles = StyleSheet.create({
     color: colors.white,
   },
 });
-
-export default NewLeave;
